@@ -16,15 +16,15 @@ Each milestone ends with something you can open in a browser (`index.html`) and 
 - [x] **Test:** play 10 or more rounds and check that win %, win streak, and best streak match the results shown. Click Reset and check that everything reads 0%, 0, 0.
 
 ## Milestone 3: Clean layout and styling
-- [ ] Center the layout and make the buttons large and easy to click
-- [ ] Color-code the result (for example green for a win, red for a loss, gray for a tie)
-- [ ] Make sure the page works on a phone-sized window
-- [ ] **Test:** play in a full window and in a narrow one. Everything is readable and nothing overlaps.
+- [x] Center the layout and make the buttons large and easy to click
+- [x] Color-code the result (for example green for a win, red for a loss, gray for a tie)
+- [x] Make sure the page works on a phone-sized window
+- [x] **Test:** play in a full window and in a narrow one. Everything is readable and nothing overlaps.
 
 ## Milestone 4: Inspirational quote ticker (first nice-to-have)
-- [ ] Add the quote data you provide
-- [ ] Add a bar along the bottom of the page with quotes sliding from right to left
-- [ ] Make sure the ticker doesn't cover the game buttons or the score
+- [x] Add the quote data you provide
+- [x] Add a bar along the bottom of the page with quotes sliding from right to left
+- [x] Make sure the ticker doesn't cover the game buttons or the score
 - [ ] **Test:** open the page and watch the quotes scroll smoothly and loop. The game still works while they scroll.
 
 ## Later (not scheduled)
