@@ -16,11 +16,19 @@
     <button class="choice" data-choice="scissors">Scissors</button>
   </div>
 
+  <p id="scoreboard">
+    Win %: <span id="win-percent">0%</span> |
+    Win Streak: <span id="streak">0</span> |
+    Best Streak: <span id="best-streak">0</span>
+  </p>
+
   <div class="result-area">
     <p>You picked: <span id="player-pick">-</span></p>
     <p>Computer picked: <span id="computer-pick">-</span></p>
     <p id="result">Click a button to play!</p>
   </div>
+
+  <button id="reset">Reset</button>
 
   <script src="script.js"></script>
 </body>
