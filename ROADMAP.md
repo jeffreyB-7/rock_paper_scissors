@@ -25,7 +25,7 @@ Each milestone ends with something you can open in a browser (`index.html`) and 
 - [x] Add the quote data you provide
 - [x] Add a bar along the bottom of the page with quotes sliding from right to left
 - [x] Make sure the ticker doesn't cover the game buttons or the score
-- [ ] **Test:** open the page and watch the quotes scroll smoothly and loop. The game still works while they scroll.
+- [x] **Test:** open the page and watch the quotes scroll smoothly and loop. The game still works while they scroll.
 
 ## Later (not scheduled)
 - [ ] Sounds and animations
