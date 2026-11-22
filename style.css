@@ -2,18 +2,102 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
-  background-color: FloralWhite;
+  /* Extra room at the bottom so the ticker never covers the game */
+  padding-bottom: 80px;
+  /* Keep the game in a centered column instead of stretching across the screen */
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.choice {
+/* The row that holds Rock, Paper, and Scissors */
+.choices {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Big, easy-to-click buttons (the Reset button shares this look) */
+.choice,
+#reset {
   background-color: aqua;
-  font-size: 18px;
-  padding: 10px 20px;
-  margin: 5px;
+  font-size: 22px;
+  padding: 18px 10px;
+  margin: 0;
   cursor: pointer;
+}
+
+/* Each choice button shares the row equally */
+.choice {
+  flex: 1;
+}
+
+#reset {
+  margin-top: 20px;
+  padding: 12px 30px;
+}
+
+#scoreboard {
+  font-size: 18px;
+  margin: 20px 0;
 }
 
 #result {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 24px;
+}
+
+/* Result colors (the class is added by script.js after each round) */
+.result-win {
+  color: #1a7f37;
+}
+
+.result-lose {
+  color: #c62828;
+}
+
+.result-tie {
+  color: #666666;
+}
+
+/* The quote ticker: a bar stuck to the bottom of the window */
+#ticker {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: #222222;
+  color: white;
+  padding: 14px 0;
+  font-size: 18px;
+}
+
+/* The track is one long line of text that slides to the left.
+   script.js sets the animation speed. */
+#ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker-scroll 30s linear infinite;
+}
+
+/* Slide left by half the track. The track holds two identical halves,
+   so jumping back to the start is invisible and it loops forever. */
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Phone-sized screens: stack the buttons so each one is full width */
+@media (max-width: 480px) {
+  .choices {
+    flex-direction: column;
+  }
+
+  #reset {
+    width: 100%;
+  }
 }

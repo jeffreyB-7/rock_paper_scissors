@@ -82,7 +82,10 @@ function playRound(playerChoice) {
     lose: "You lose!",
     tie: "It's a tie!"
   };
-  document.getElementById("result").textContent = messages[result];
+  const resultElement = document.getElementById("result");
+  resultElement.textContent = messages[result];
+  // Sets the class to result-win, result-lose, or result-tie (styled in style.css)
+  resultElement.className = "result-" + result;
 }
 
 // Put the game back to how it looked when the page first loaded
@@ -96,6 +99,7 @@ function resetGame() {
   document.getElementById("player-pick").textContent = "-";
   document.getElementById("computer-pick").textContent = "-";
   document.getElementById("result").textContent = "Click a button to play!";
+  document.getElementById("result").className = "";
 }
 
 document.getElementById("reset").addEventListener("click", resetGame);
@@ -107,3 +111,67 @@ buttons.forEach(function (button) {
     playRound(button.dataset.choice);
   });
 });
+
+// Return a shuffled copy of a list (the original list is not changed)
+function shuffle(list) {
+  const copy = list.slice();
+  // Walk backwards, swapping each item with a random item at or before it
+  for (let i = copy.length - 1; i > 0; i = i - 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = copy[i];
+    copy[i] = copy[j];
+    copy[j] = temp;
+  }
+  return copy;
+}
+
+// Add every quote in the list to the container, with a colored speaker name
+function addQuotes(container, list) {
+  list.forEach(function (quote) {
+    container.appendChild(document.createTextNode("“" + quote.text + "”"));
+
+    if (quote.speaker) {
+      container.appendChild(document.createTextNode(" — "));
+      const name = document.createElement("span");
+      name.textContent = quote.speaker;
+      name.style.fontWeight = "bold";
+      name.style.color = speakerColors[quote.speaker] || "white";
+      container.appendChild(name);
+    }
+
+    // Non-breaking spaces so the gap between quotes never collapses
+    container.appendChild(document.createTextNode("   •   "));
+  });
+}
+
+// Fill the ticker at the bottom with the quotes from quotes.js
+function buildTicker() {
+  if (quotes.length === 0) {
+    return;
+  }
+
+  const track = document.getElementById("ticker-track");
+
+  // A new random order every time the page loads
+  const shuffled = shuffle(quotes);
+
+  // The first half of the track
+  const half = document.createElement("span");
+  addQuotes(half, shuffled);
+  track.appendChild(half);
+
+  // Repeat the quotes until one half is wider than the screen (no empty gaps)
+  let tries = 0;
+  while (half.offsetWidth < window.innerWidth && tries < 50) {
+    addQuotes(half, shuffled);
+    tries = tries + 1;
+  }
+
+  // The second half is an exact copy, which makes the loop seamless
+  track.appendChild(half.cloneNode(true));
+
+  // Same speed on every screen: 80 pixels per second
+  track.style.animationDuration = half.offsetWidth / 80 + "s";
+}
+
+buildTicker();
