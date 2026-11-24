@@ -27,6 +27,17 @@ Each milestone ends with something you can open in a browser (`index.html`) and 
 - [x] Make sure the ticker doesn't cover the game buttons or the score
 - [x] **Test:** open the page and watch the quotes scroll smoothly and loop. The game still works while they scroll.
 
+## Milestone 5: Hands, countdown, and sounds
+- [x] Show a "You" side and a "Computer" side with a big emoji hand on each (rock, paper, scissors emoji; easy to swap for custom images later)
+- [x] After you click a choice, play a "3, 2, 1" countdown (about half a second per step), with both sides showing a fist while it counts; the countdown text only shows during the countdown and disappears at the reveal
+- [x] When the countdown ends, reveal both hands and the result; the stats update at the reveal
+- [x] Disable the choice buttons during the countdown so rounds can't overlap, and make Reset cancel a countdown in progress
+- [x] Add countdown sounds: a tick on each of 3, 2, 1 and a different sound at the reveal (generated in JavaScript with the Web Audio API, no sound files)
+- [x] Add a win sound and a lose sound (no tie sound), also generated in code
+- [x] **Test:** click each choice and watch the countdown, the reveal, and the sounds. Check that the hands match the result text, that you can't click during the countdown, and that Reset mid-countdown clears everything.
+
 ## Later (not scheduled)
-- [ ] Sounds and animations
+- [ ] Mute button for the sounds
+- [ ] Tie sound
+- [ ] Custom rock, paper, and scissors images in place of the emoji
 - [ ] Smarter computer
