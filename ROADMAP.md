@@ -34,7 +34,7 @@ Each milestone ends with something you can open in a browser (`index.html`) and 
 - [x] Disable the choice buttons during the countdown so rounds can't overlap, and make Reset cancel a countdown in progress
 - [x] Add countdown sounds: a tick on each of 3, 2, 1 and a different sound at the reveal (generated in JavaScript with the Web Audio API, no sound files)
 - [x] Add a win sound and a lose sound (no tie sound), also generated in code
-- [ ] **Test:** click each choice and watch the countdown, the reveal, and the sounds. Check that the hands match the result text, that you can't click during the countdown, and that Reset mid-countdown clears everything.
+- [x] **Test:** click each choice and watch the countdown, the reveal, and the sounds. Check that the hands match the result text, that you can't click during the countdown, and that Reset mid-countdown clears everything.
 
 ## Later (not scheduled)
 - [ ] Mute button for the sounds
