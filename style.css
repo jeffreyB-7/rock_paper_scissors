@@ -1,12 +1,29 @@
+/* Always use the light color scheme, even if the browser or system prefers dark */
+html {
+  color-scheme: light;
+}
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  padding: 20px;
-  /* Extra room at the bottom so the ticker never covers the game */
-  padding-bottom: 80px;
-  /* Keep the game in a centered column instead of stretching across the screen */
+  background-color: white;
+  color: black;
+  margin: 0;
+  /* Stack the game and the ticker. The game grows to fill the screen, so the
+     ticker always sits at the very bottom of the page. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The game itself: a centered column */
+.game {
+  flex: 1;
+  width: 100%;
   max-width: 500px;
   margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* The row that holds Rock, Paper, and Scissors */
@@ -36,6 +53,58 @@ body {
   padding: 12px 30px;
 }
 
+/* Greyed out while the countdown is running (and back to the normal arrow
+   cursor instead of the pointing hand) */
+.choice:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* The two hands: You on the left, Computer on the right */
+.arena {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.side {
+  flex: 1;
+}
+
+.side-label {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+
+.hand {
+  font-size: 80px;
+  line-height: 1.2;
+}
+
+/* The hands bob up and down while the countdown runs */
+.hand.shaking {
+  animation: shake 0.25s ease-in-out infinite alternate;
+}
+
+@keyframes shake {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-14px);
+  }
+}
+
+/* "3", "2", "1", "Shoot!" (min-height stops the page jumping when it is empty) */
+#countdown {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0;
+  min-height: 40px;
+}
+
 #scoreboard {
   font-size: 18px;
   margin: 20px 0;
@@ -44,6 +113,7 @@ body {
 #result {
   font-weight: bold;
   font-size: 24px;
+  min-height: 30px;
 }
 
 /* Result colors (the class is added by script.js after each round) */
@@ -59,12 +129,10 @@ body {
   color: #666666;
 }
 
-/* The quote ticker: a bar stuck to the bottom of the window */
+/* The quote ticker: a bar at the very bottom of the page. It comes after the
+   game, so it scrolls with the page instead of floating over it. */
 #ticker {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  flex-shrink: 0;
   overflow: hidden;
   background-color: #222222;
   color: white;

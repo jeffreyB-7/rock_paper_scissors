@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- The game sits in its own centered column; the ticker comes after it -->
+  <main class="game">
   <h1>Rock Paper Scissors</h1>
   <p>Make your pick:</p>
 
@@ -15,6 +17,19 @@
     <button class="choice" data-choice="paper">Paper</button>
     <button class="choice" data-choice="scissors">Scissors</button>
   </div>
+
+  <!-- The two hands. They show a fist at the start, then the real picks. -->
+  <div class="arena">
+    <div class="side">
+      <p class="side-label">You</p>
+      <div class="hand" id="player-hand">&#9994;</div>
+    </div>
+    <div class="side">
+      <p class="side-label">Computer</p>
+      <div class="hand" id="computer-hand">&#9994;</div>
+    </div>
+  </div>
+  <p id="countdown"></p>
 
   <p id="scoreboard">
     Win %: <span id="win-percent">0%</span> |
@@ -29,6 +44,7 @@
   </div>
 
   <button id="reset">Reset</button>
+  </main>
 
   <!-- Ticker bar: script.js fills the track with the quotes -->
   <div id="ticker">
